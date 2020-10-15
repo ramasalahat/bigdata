@@ -1,0 +1,65 @@
+Hello Fellow Data Pirates!!! ,here is every thing you need to know about Logistic Regression.
+Let’s Start…………
+Image for post
+Photo by Stephen Dawson on Unsplash
+History of Logistic Regression
+Logistic Regression’s history can be traced back to the 19th century when it was first used to describe the growth rate of populations by Quetelet and Verhulst. Today, logistic regression is widely used in the field of medicine and biology. Epidemiology is also an area where logistic regression is widely used for identification of risk factors for diseases and to plan for preventive medication. Studies concerned with public health and related policy decisions use logistic regression as an important statistical tool.
+Epidemiology is the method used to find the causes of health outcomes and diseases in populations. In epidemiology, the patient is the community and individuals are viewed collectively.
+Types Of Logistic Regression
+•Binary (Pass/Fail)
+•Multi (Cats, Dogs, Sheep)
+•Ordinal (Low, Medium, High)
+Binary Logistic Regression
+•Say we’re given data on student exam results and our goal is to predict whether a student will pass or fail based on number of hours slept and hours spent studying. We have two features (hours slept, hours studied) and two classes: passed (1) and failed (0).
+Here the classification will have two classes with values as 0 and 1 , hence the name binary classification.
+Image for post
+Binary Logistic Regression
+Multinomial-logistic Regression
+•Multinomial logistic regression is used to model nominal outcome variables, in which the log odds of the outcomes are modeled as a linear combination of the predictor variables.
+•Instead of y=0,1 we will expand our definition so that y=0,1…n. Basically we re-run binary classification multiple times, once for each class.
+Ordinal Logistic Regression
+Ordinal logistic regression (often just called ‘ordinal regression’) is used to predict an ordinal dependent variable given one or more independent variables. It can be considered as either a generalization of multiple linear regression or as a generalization of binomial logistic regression. As with other types of regression, ordinal regression can also use interactions between independent variables to predict the dependent variable.
+Let’s Jump to Mathematics part now!!!!
+We will start from Linear Regression then move step by step to Logistic Regression.
+Before we dig deep into logistic regression, we need to clear up some of the fundamentals of statistical terms — Probability and Odds.
+The probability that an event will occur is the fraction of times you expect to see that event in many trials. If the probability of an event occurring is Y, then the probability of the event not occurring is 1-Y. Probabilities always range between 0 and 1.
+The odds are defined as the probability that the event will occur divided by the probability that the event will not occur. Unlike probability, the odds are not constrained to lie between 0 and 1 but can take any value from zero to infinity.
+The outcome in binomial logistic regression can be a 0 or a 1. The idea is then to estimate the probability of an outcome being a 1 or a 0. Given that the probability of the outcome being a 1 is given by p then the probability of it not occurring is given by 1-p. This is a special case of Binomial distribution called the Bernoulli distribution.
+The idea in logistic regression is to cast the problem in form of generalized linear regression model.
+where y=predicted value, x= independent variables and the β are coefficients to be learnt (^) represents power of.
+Beta (β)is the value by which the log odds change by a unit change in a particular attribute by keeping all other attributes fixed or unchanged (control variables).
+This can be compactly expressed in vector form:
+Then
+But this is linear regression stuff so we need to find a way to cast the logistic regression problem in a manner whereby at least the expression above can be used. Thus if we compute the odds of the outcome as:
+We can move a step closer to casting the problem in a continuous linear manner but this is still just having positive values we need a range of (−∞,+∞)
+That can be done by getting the (natural) logarithm of the odds as:
+This now varies continuously linear and thus we can do the following:
+Thus the logit function acts like a link between logistic regression and linear regression and thus it is called a link function.
+We then take the inverse of logit to get the probability p as given below:
+Taking the natural exponential on both sides gives:
+Then adding 1 on both sides gives:
+Changing subject of formula to 1-p gives:
+Then subtracting 1 from both sides to give:
+Multiply by -1 on both sides to get:
+Then divide the numerator and denominator by e^y to get:
+Looks familiar?
+Of course it is a logistic (sigmoid) function.
+Image for post
+Sigmoid Function
+The values of a logistic function will range from 0 to 1. The values of Z will vary from -infinity to +infinity.
+From this point we can cast logistic regression in form of a single layered neural network (NN) with a sigmoid activation function. Which means we can estimate the weight parameters using the usual stochastic gradient descent (SGD) by minimizing the cross-entropy loss function given by:
+l(p,y)=−ylog(p)−(1−y)log(1−p)
+Where y∈[0,1]
+The multinomial logistic regression can then be just about adding more sigmoid neurons in the layer. And instead of using the logistic function we can use the softmax as the activation function to keep the output as a probability distribution. The loss in the multinomial logistic regression case with a softmax becomes the log likelihood loss.
+Thus for simplicity you need to look at logistic regression from the modern formulation of standard ML techniques such as regularization and loss function optimization using gradient decent optimization methods.
+Once you derive the logistic function as above, it becomes necessary to treat the rest of the logistic regression problem as just a single layered NN with sigmoid activation functions. That way we can solve the whole logistic regression problem by standard gradient descent algorithms.
+Estimation of Regression Coefficients
+•Unlike linear regression model, that uses Ordinary Least Square for parameter estimation, we use Maximum Likelihood Estimation.
+•Because logistic regression predicts probabilities, rather than just classes, we can fit it using likelihood. For each training data-point, we have a vector of features xi, and an observed class, yi. The probability of that class was either p, if yi=1, or 1−p, if yi=0. The likelihood is then
+Image for post
+Maximum Likely Hood Function
+Finally Some Takeaways of Logistic Regression
+•In Logistic regression, it is not required to have the linear relationship between the dependent and independent variable.
+•In logistic regression, there should not be collinearity between the independent variable.
+•Maximum likelihood estimation method is used for estimation of accuracy
+The logistic model outputs the logits, i.e. log odds; and the logistic function outputs the probabilities.

@@ -1,0 +1,52 @@
+→ Initially,the values of m and b will be 0 and the learning rate(α) will be introduced to the function.
+The value of learning rate(α) is taken very small,something between 0.01 or 0.0001.
+The learning rate is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a cost function.
+→ Then the partial derivative is calculate for the cost function equation in terms of slope(m) and also derivatives are calculated with respect to the intercept(b).After Calculation the equation acheived will be.
+Image for post
+Guys familiar with Calculus will understand how the derivatives are taken.
+If you don’t know calculus don’t worry just understand how this works and it will be more than enough to think intuitively what’s happening behind the scenes and those who want to know the process of the derivation check out this blog by sebastian raschka.
+→ After the derivatives are calculated,The slope(m) and intercept(b) are updated with the help of the following equation.
+m = m+α*derivative of m
+b = b+α*derivative of b
+derivative of m and b are calculated above and α is the learning rate.
+You must be wondering why I added and not subtracted,Well if you observe the result of the derivative you will see that the result is in negative.So the equation turns out to be :
+m = m — α*derivative of m
+b = b — α*derivative of b
+If you’ve gone through the Jason Brownlee’s Blog you might have understood the intuition behind the gradient descent and how it tries to reach the global optima(Lowest cost function value).
+Why should we substract the weights(m and b)with the derivative?
+Gradient gives us the direction of the steepest ascent of the loss function and the direction of steepest descent is opposite to the gradient and that is why we substract the gradient from the weights(m and b)
+→ The process of updating the values of m and b continues until the cost function reaches the ideal value of 0 or close to 0.
+The values of m and b now will be the optimum value to describe the best fit line.
+I hope things above are making sense to you.So,Now let’s understand other important things related to the linear Regression.
+Till now we have understood How the Slope(m) and Intercept(b) are calculated,what Cost Function is and How Gradient Descent algorithm helps get the ideal Cost Function Value with the help of Simple Linear Regression.
+For Multiple Linear Regression everything happens exactly same just the formula changes from a simple equation to a bigger one as shown above.
+Now to understand How Co-efficients are calculated in Multiple Linear Regression,please go to this link to get a brief idea about it, Although you won’t be performing it manually ,but, it’s always good to know what’s happening behind the scene.
+Now Let’s Look at how to check the quality of the model.
+Interpreting the results of Linear Regression:
+Image for post
+Photo by National Cancer Institute on Unsplash
+You have cleaned the data and passed it on to the model,Now the question arises,How do you know if your Linear Regression Model is Performing well?
+For That we Use the Statsmodel Package in Python and After fitting the data we do a .Summary() on the model,which gives result as shown in the pic below.(P.S. — I used a pic from google images)
+Image for post
+Now,If you Look at the Pic Carefully you will see a bunch of different Statistical test.
+I Suppose you are familiar with R-Squared and Adjusted R-Squared shown on the top right of the image,If you don’t no worries read my blog about R-Squared and P-value.
+Here we will see what the lower block of the image interprets.
+Image for post
+Omnibus/Prob(Omnibus):It is statistical test that tests the skewness and Kurtosis of the residual.
+A value of Omnibus close to 0 show the normalcy(normally distributed) of the residuals.
+A value of Prob(Omnibus) close to 1 show the probability that the residuals are normally distributed.
+Skew: It is a measure of the symmetry of data,values closer to 0 indicates the residual distribution is normal.
+Kurtosis: It is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution. That is, data sets with high kurtosis tend to have heavy tails, or outliers. Data sets with low kurtosis tend to have light tails, or lack of outliers.
+Greater Kurtosis can be interpreted as a tighter clustering of residuals around zero, implying a better model with few outliers.
+Durbin-Watson:It is a statistical test to detect any auto-correlation at a lag 1 present in the residuals.
+→ value of test is always between 0 and 4
+→ IF value = 2 the there is no auto-correlation
+→ IF value greater than(>) 2 then there is negative auto-correlation,which means that the positive error of one observation increases the chance of negative error of another observation and vice versa.
+→ IF value less than(<) 2 the there is positive auto-correlation.
+Jarque-Bera/Prob(Jarque-Bera):It is a Statistical test which test a goodness of fit of whether the sample data has skewness and kurtosis matching the normal distribution.
+Prob(Jarque-Bera) indicates normality of the residuals.
+Condition Number:This is a Statistical Test that measures the sensitivity of a function’s output as compared to its input.
+When there is multicollinearity present , we can expect much higher fluctuations to small changes in the data,So the value of the test will be very high.
+A lower value is expected,something below 30,or more specifically value closer to 1.
+I hope this article helped you understand the Algorithm and Most of the concepts related to it.
+Coming up next Week,We will Understand the Logistic Regression.

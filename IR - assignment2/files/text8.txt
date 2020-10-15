@@ -1,0 +1,23 @@
+1.1 Introduction
+In a data set we can characterize features or variables as either quantitative or qualitative (also known as categorical). Quantitative variables are nothing but numerical values like a person’s weight or temperature of a city and qualitative variables are values in one of ’n’ different classes, or categories like gender (male or female), different blog categories(technical, cooking, fashion etc.,). We tend to refer to problems with a quantitative response as regression problems. The response variable here is referred to as target or dependent variable and the other independent variables are predictors.
+Linear regression is used for finding linear relationship between target and one or more predictors. There are two types of linear regression- Simple and Multiple. In Simple linear regression we find the relationship between a dependent Y and independent variable X, the mathematical equation that approximates linear relationship between X and Y is
+β0 and β1 are two unknown constants that represent the intercept and slope terms in the linear model. Together, β0 and β1 are known as the model coefficients or parameters. Once we have used our training data to produce estimates ˆβ0 and ˆβ1 for the model coefficients,
+Image for post
+where ˆy indicates a prediction of Y on the basis of X = x.
+Image for post
+represents the i th residual (error) which is the difference between the actual i th response value and the i th response value that is predicted by our linear model. We define the residual sum of squares (RSS) as
+Image for post
+which is equivalent to
+Image for post
+In regression, there is always a notion of a best-fit line — the line which fits the given data in the best way. RSS here is called loss function or cost function and minimizing it would result in good fit or accuracy. This approach is called least squares method. Least squares method chooses ˆβ0 and ˆβ1 to minimize the RSS using some calculus. Then a new set of coefficients are generated and we need some metrics to validate the accuracy of these estimated coefficients.
+Here comes a set of metrics that help to perform the validating task easy:
+1.2 Validation of Estimated Coefficients
+Standard Errors associated with ˆβ0 and ˆβ1,
+Image for post
+where sigma is standard deviation,
+Image for post
+In general Var(Error) is not known and it is approximated from the data as Residual Standard Error
+Image for post
+2. We now compute t-static that measures the number of standard deviations ˆβ1 is away from 0
+Image for post
+3. The probability of observing any value equal to |t| or larger, assuming β1 =0(which implies there is no relation ship between X and Y) is called p-value. A small p-value indicates it is an unlikely event that β1 = 0 and that Y is dependent on X or a relation exists between X and Y. Similarly a high p-values indicates no relation and X is insignificant in predicting Y.

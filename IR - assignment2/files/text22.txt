@@ -1,0 +1,56 @@
+As a Data Scientist, you must familiarize yourself with a variety of different algorithms. One of my favorite algorithms that continues to fascinate me is Logistic Regression. Logistic Regression is a supervised learning classifier. Although Logistic Regression is used in traditional statistics its applications in in machine learning classification remain fascinating.
+Linear Regression
+Before diving right into Logistic Regression it’s important to have some basic understanding of Linear Regression.
+Image for post
+Figure 1
+Linear Regression can be really useful when you are trying to predict a continuous output value from a linear relationship. But a Logistic Regression output values lie between 0 and 1; a probability. Hence, an output continuous value not in the range between 0 and 1 does not work with Logistic Regression.
+See Figure 1 for a linear regression model example. The blue points are are our data points and the red line is our model.
+Linear Regression uses statistical measures like R² and p-value to understand the model performance and variables training the model.
+R² is used to indicate if there is a correlation between the dependent variable and a particular independent variable. In other words, does the the independent variable help determine the dependent variable.
+P-value is used to determine if R² is statistically significance.
+Lastly you should know that the cost function of linear regression is Mean Squared Error.
+Logistic regression
+How logistic regression works is that it predicts the probability of your sample belonging to one classification versus another. Although it can be used for multivariable classification, it is a a great tool to use for binary classification problems because it operates on probability. The output value in logistic regression is a numbered classification, but before the classification is given, the ACTUAL output is a numerical probability in the range of 0 to 1. Based on the probability, a classification of 1 or 0 will be given. The algorithm essentially rounds the value to give a classification; 0 being your negative class and 1 being your positive class.
+Image for post
+Figure 2
+Common Logistic Regression Problems
+That are lots of classification and probabilistic problems data scientists are using logistic regression for today:
+Lung Cancer risk / classification based on given habits (variables)
+Probability of getting approved for a loan given financial information.
+Probability of obesity developing in patients based off of daily habits and dietary choices.
+Probability of an email being classified as spam or not.
+Sigmoid Function
+It’s necessary to understand linear regression because logistic regression also uses a linear equation with independent variables to predict an output value (probability). Their use cases (classification vs. forecasting) are what ultimately differentiate one from the other.
+Despite Logistic Regression using a linear equation, it is a sigmoid function. A sigmoid function is simply a mathematical function that takes on a characteristic “S” shaped curve.
+The mathematical sigmoid function is shown below in figure 3.
+Image for post
+Figure 3
+And right below in figure 4 is your standard linear function that entails constants and input values.
+Image for post
+Figure 4
+Now in figure 5, we plug the linear equation into the sigmoid function. The explanation and graph (figure 6) is provided afterwards.
+Image for post
+Figure 5
+We take the output(z) of the linear equation and give to the function g(x) which returns a squashed value h, the value h will lie in the range of 0 to 1. To understand how sigmoid function squashes the values within the range, let’s visualize the graph of the sigmoid function.
+Image for post
+Figure 6
+As you can see from the graph, the sigmoid function becomes asymptote to y=1 for positive values of x and becomes asymptote to y=0 for negative values of x.
+Maximum Likelihood Estimation
+A sigmoid function defines a probabilistic curve that your data points will take, but maximum likelihood estimation is essentially the probabilistic frame work that adjusts the parameters to maximize accuracy within your model.
+There is a lot of math and Bayesian statistics to understand regarding MLE, but if you’d like to learn more about the specifics, I found this documentation very helpful. It’s important to establish some familiarity with some of the mathematics that shape your model.
+Cost Function
+The cost function of logistic regression is more complex than that of linear regression. The cost function of linear regression is Mean Squared Error.
+MSE measures the average squared difference between an observation’s actual and predicted values. The output is a single number representing the cost, or score, associated with our current set of weights. Our goal is to minimize MSE to improve the accuracy of our model.
+The cost function for linear regression cannot be used on logistic regression. It would end up being a non-vex function (figure 7) with multiple local minimums making it difficult to minimize cost values to determine global minimum.
+Image for post
+Figure 7
+Without delving too deep into the math and gradient descent. I’ll provide the mathematical cost function for Logistic Regression below in Figure 8.
+Image for post
+Figure 8
+To review the math that breaks down the cost function, definitely have a review of this documentation.
+Final Thoughts
+Since we know that a logistic regression is shown by figure 6, verbally you can understand the model as:
+“Given input x, the probability of this sample of data being classified as 1, can be found by determining the corresponding y value on the sigmoid function.”
+I hope you have a better understanding of logistic regression now and how it operates. It’s a very mathematical algorithm. Once you understand the math it becomes very fascinating. Review the documentation I provided and let me know if you have any additional thoughts or fascinations. I’d love to hear your thoughts!
+Lastly, I’m on LinkedIn and am currently open to new Data Analytics and Data Science opportunities in the New York area. Feel free to reach out and connect if your team is looking for an experienced data science professional.
+Thanks for reading!

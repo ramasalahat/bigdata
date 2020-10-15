@@ -1,0 +1,174 @@
+my previous Blog, I tried explaining about Linear Regression and how it works.Let’s See why Logistic Regression is one of the important topic to understand.
+Here’s the link to my previous article on Linear Regression in case you missed it.
+Content
+What is Logistic Regression?
+Types of Logistic Regression.
+Assumptions of Logistic Regression.
+Why not Linear Regression for Classification?
+The Logistic Model.
+Interpretation of the co-efficients.
+Odds Ratio and Logit
+Decision Boundary.
+Cost Function of Logistic Regression.
+Gradient Descent in Logistic Regression.
+Evaluating the Logistic Regression Model.
+Let’s get Started
+Image for post
+Photo by Dose Media on Unsplash
+What is Logistic Regression?
+Logistic Regression is a Supervised statistical technique to find the probability of dependent variable(Classes present in the variable).
+Logistic regression uses functions called the logit functions,that helps derive a relationship between the dependent variable and independent variables by predicting the probabilities or chances of occurrence.
+The logistic functions (also known as the sigmoid functions) convert the probabilities into binary values which could be further used for predictions.
+Types of Logistic Regression:
+Binary Logistic Regression:
+The dependent variable has only two 2 possible outcomes/classes.
+Example-Male or Female.
+Multinomial Logistic Regression:
+The dependent variable has only two 3 or more possible outcomes/classes without ordering.
+Example: Predicting food quality.(Good,Great and Bad).
+Ordinal Logistic Regression:
+The dependent variable has only two 3 or more possible outcomes/classes with ordering. Example: Star rating from 1 to 5
+Now that different types of Logistic Regression is clear,Let’s take a look at the assumptions of Logistic Regression.These assumptions should be kept in mind while building a model.
+Assumptions of Logistic Regression:
+Even Though Logistic Regression belongs to the Linear models,it does not make any assumptions of the Linear Regression models,like:
+→ It does not require linear relationship between dependent and independent variables.
+→ The error terms do not need to be normally distributed.
+→ Homoscedasticity is not required.
+However,it has few of it’s own assumption:
+It assumes that there is minimal,or no multi-collinearity among the independent variables.
+The best way to check the prescence of multi-collinearity is to perform VIF(Variance Inflation Factor).
+It assumes that independent variables that linearly related to log of odds.
+It can be checked with the Box-Tidwell test.
+It assumes a large sample for good prediction.
+It assumes that the observations are independent of each other.
+There is no influential values(outliers) in the continous predictors(independent variables).
+This can be checked with the help of IQR,z-score or can be visualized using box or violin plots.
+Logistic Regression with 2 classes that the dependent variable is binary and the ordered Logistic Regression requires the dependent variable to be ordered.
+There may also rise a question that why can’t we simply use Linear Regression for Classification problems other than using Logistic Regression,Let’s have a look below as to why we should not use Linear regression for classification problem.
+Image for post
+Photo by Emily Morter on Unsplash
+Why not Linear Regression for Classification?
+As we Logistic Regression was introduced to tackle the classification problems be it binary classification or multi-class classification problem,but why can’t we use Linear Regression?
+Linear Regression predicts continuous variables like price of house,and the output of the Linear Regression can range from negative infinity to positive infinity.
+Since,The predicted values is not probability value but a continuous value for the classes,it will be very hard to find the right threshold that can help distinguish between the classes.
+Let’s assume you got lucky with the threshold and figured out the right threshold for the binary class problem,However if the problem would be multi-class it will not give the desirable prediction.
+In a multiclass problem there can n number of classes,Now each classes will be labelled from 0-n.
+Suppose,we have 5 class problem 0,1,2,3 and 4 these classes won’t carry or won’t be having any meaningful order.However,they would be forced to establish some kind of relation between the dependent and the independent features.
+Moreover the dependent variables would be taken as continuous numbers and the best fit line would pass through the mean of the points,giving the out come in continuous value that may go below 0 and may exceed 4.
+The Logistic Model
+All the problems mentioned above is tackled by the Logistic Regression.
+The Logistic Regression instead for fitting the best fit line,condenses the output of the linear function between 0 and 1.
+Image for post
+In the formula of the logistic model,
+when b0+b1X == 0, then the p will be 0.5,
+similarly,b0+b1X > 0, then the p will be going towards 1 and
+b0+b1X < 0, then the p will be going towards 0.
+Interpretation of the Coefficients
+Interpretation of the weights differ from the Linear Regression as the output of the Logistic Regression is in probabilities between 0 and 1.
+Instead of the slope co-efficient(b) being the rate of change of the p as x changes,now the slope co-efficient is interpreted as the rate of change of the “log odds” as X changes.
+Image for post
+To read more about it refer this link.
+Now,Let’s understand what log odds is.
+Odds Ratio and Logit
+Odds ratio is defined as the ratio of the odds in presence of B and odds of A in the absence of B and vice versa.
+In other words,Odds are the ratio of the probability of success to the probability of failure and Logit is Just the Log of the Odds Ratio.
+Let’s understand this with example:
+Assume the probability of success is 0.6.
+So,probability of failure will be (1–0.6) = 0.4
+Odds are determined from probabilities and range between 0 to ∞.
+So,Now odds(Success) = p/(1-p) or p/q = 0.6/0.4 = 1.5
+Also,odds(Failure) = 0.4/0.6 = 0.66667
+Now that you have a basic understanding what odds ratio is i recommend you to go to this link to understand how it is used in Logistic Regression and the maths behind it.
+Formula of Odds is:
+Image for post
+If we want the odds ratio between binary classes then:
+Image for post
+Logit Function is just the log of odds and the formula is :
+Image for post
+In Logistic regression we can calculate odds ratio between the classes:
+Image for post
+Now , that you’ve understood what odds ratio is let’s see what decision boundary is:
+Decision Boundary
+A decision Boundary is a line or margin that separates the classes.
+Classification algorithm is all about finding the decision boundary that helps distinguish between the classes perfectly or close to perfect.
+Logistic Regression decides a proper fit to the decision boundary so that we will be able to predict which class a new data will correspond to.
+Image for post
+I highly recommend going through this link to understand the maths behind how the decision boundary is taken in the logistic regression.
+Now that you have understood what decision boundary is and how it is found.Let’s have the look of the cost function of the logistic Regression.
+Cost Function of the Logistic Regression
+Image for post
+Photo by Brett Jordan on Unsplash
+Cost Function is a function that measures the performance of a Machine Learning model for given data.
+Cost Function is basically the calculation of the error between predicted values and expected values and presents it in the form of a single real number.
+Many people gets confused between Cost Function and Loss Function,
+Well to put this in simple terms Cost Function is the average of error of n-sample in the data and Loss Function is the error for individual data points.In other words,Loss Function is for one training example,Cost Function is the for the entire training set.
+So, when it’s clear what cost function is Let’s move on.
+We know that the Logistic function is:
+Image for post
+The main task for us is to find the best parameter(x) in the above equation present in the image to minimize the error.
+Now, if you have seen the maths behind the decision boundary you will know that the parameter(x) is not limited to the logistic function it also contributes to the equation of the decision boundary.
+It is very much similar to the Linear Regression,define a cost function to find the error and then perform gradient descent in order to update parameter and minimize the cost function.
+But, we can not use the cost Function of Linear Regression Model.
+Why we Can not use the Cost function of the Linear Regression?
+Trying to use a cost function of the Linear Regression model using the Mean Squared Error will give a non-Convex function,which will give a weirdly shaped graph that looks like this.
+Image for post
+This graphs has many local minimums which makes it very hard for the cost function to reach global minimum and minimize the error.
+Image for post
+This happens because in Logistic Regression we have sigmoid function which is non-linear.
+This is why Cost function for Logistic Regression is :
+Image for post
+Image for post
+If you combine the above two equations in one,You will get a convex function and this cost function will help the Logistic Regression model converge towards Global Minimum faster.
+Image for post
+You Must be wondering why there is a negative(-) sign in the cost function,
+Well if you see,the values present in the log will be probabilities between 0 and 1,So,The value of log1 is 0 and the value of log0 is negative(-) infinity.
+So,the values from the cost function will always be in negative terms and that is why we add negative(-) sign to it.
+Now that we know the cost function of the Logistic Regression let’s understand how do we minimize the error to get the high performing model
+Gradient Descent in Logistic Regression
+Image for post
+Photo by Ussama Azam on Unsplash
+Gradient descent is an optimization algorithm used to find the values of parameters (coefficients) of a function that minimizes a cost function (cost).
+To Read more about it and get a perfect understanding of Gradient Descent i suggest to read Jason Brownlee’s Blog.
+Now,That you have the intuition about the gradient Descent,you can understand why we need to update the weights in order to reach the global minimum.
+Steps followed by the Gradient Descent to obtain lower cost function:
+Let’s have a look at the logistic(sigmoid) function.
+Image for post
+Here, x = mx+b or x = b0 + b1x
+→ Initially,the values of m and b will be 0 and the learning rate(α) will be introduced to the function.
+The value of learning rate(α) is taken very small,something between 0.01 or 0.0001.
+The learning rate is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a cost function.
+→ Then the partial derivative is calculate for the cost function is take.After Calculation the equation acheived will be.
+Image for post
+Guys familiar with Calculus will understand how the derivatives have been done to reach at this equation.
+If you don’t know calculus don’t worry just understand how this works and it will be more than enough to think intuitively what’s happening behind the scenes and those who want to know the process of the derivation check out this blog that shows the derivation of the cost function.
+→ After the derivatives are calculated,weights are updated with the help of the following equation.
+Image for post
+Which can also be written as:
+Image for post
+If you’ve gone through the Jason Brownlee’s Blog you might have understood the intuition behind the gradient descent and how it tries to reach the global minimum(Lowest cost function value).
+Why should we substract the weights(m and b)with the derivative?
+Gradient gives us the direction of the steepest ascent of the loss function and the direction of steepest descent is opposite to the gradient and that is why we substract the gradient from the weights(m and b)
+→ The process of updating the weights will continue until the cost function reaches the ideal value of 0 or close to 0.
+Now, after you have achieved the best performing model. Let’s look at how to check the quality of the model.
+Evaluating the Logistic Regression Model
+Image for post
+Photo by Scott Graham on Unsplash
+After building the model it’s obvious for us to check how well our model is performing, how well it fits our data.
+One of the approach to do this is by Measuring how well you can predict the dependent variable based on new set of independent variables.
+R2(R-Squared) value:
+R-Squared calculated for Logistic Regression is not same as the R-Squared calculated for the Linear Regression Models.
+These Pseudo R-Squared helps measure the predictive power of the model.
+There are many different ways to calculate the R-Squared value for Logistic Regression,However,No one approach is agreed to be the best.But,among all the type of R-Squared value McFadden’s R-Squared is a better approach.
+Refer this link to go through the different types of R-Squared for Logistic Regression.
+AIC(Akaike Information Criteria):
+* AIC is the estimator of the goodness-of-fit of the model.
+* Whenever we create a model we loose some information,no one can create the perfect model. AIC estimates the amount of information loss.
+* Lesser the value of AIC means Lesser the information lost which means better the model.
+* Adding variables to the model will not increase the value of AIC.
+* One of the use of AIC is also that it helps in selecting the model.We can fit the whole data to train the model and compare the AIC values of different models and select the model with the best AIC Value.
+AIC = -2/N * LL + 2*K/N
+Where,N is the number of samples in the training data,LL is the Log Likelihood of the model on the training data. and K is the number of parameters in the data.
+Other Methods Include Confusion Matrix,Roc-Auc Curve.
+You Can Read About Confusion Matrix and Other metrics related to it in my blog Calculating Accuracy of an ML Model and Understanding the AUC-ROC Curve.
+I hope This article gives you a rough idea about the Logistic Regression Model.There is a lot more in the Logistic Regression.However, we just touched the surface of it.
+I recommend reading about Logistic Regression,Search in google,watch youtube videos and try reading papers published on this.

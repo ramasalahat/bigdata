@@ -1,0 +1,35 @@
+1.6 Stochastic gradient Descent (SGD)
+We can measure the accuracy or how good the model is fit with the measure Mean Squared Error(MSE) which calculates the mean of squared terms of difference between actual and predicted values
+Image for post
+To optimize the model we have to reduce the MSE, we define loss function (L) which is equal to MSE and by a set of iterative steps we subtract the negative derivate of loss and update it at each step so that MSE or L is reduced. To calculate the negative derivative we use Stochastic Gradient method which helps in finding the global minimum of a function(here Loss function).
+If we can imagine the function as shown in the figure,
+Image for post
+the red dot is global minima and if the function is able to reach the estimated coefficients there, then it will be minimized resulting in better accuracy. Shifting the model to go in the steepest downhill direction would be the equivalent of subtracting the negative derivative of the loss, times some constant. Thus, we can formalize gradient descent for this problem as an update rule
+Image for post
+it keeps on updating based on the gradient. α is the learning rate, and it affects how quickly m changes(m here refers to β in the convention used above)
+2. Python Tutorial on Linear Regression
+Let’s get into the practice session in python using beer consumption dataset that has temperatures of a particular day, rainfall measure,weekend or not and final response variable consumption of beer in liters. All the dependencies are resided in the top lines
+What is Linear Regression?
+It’s a method to predict a target variable by fitting the best linear relationship between the dependent and independent variable.
+Image for post
+Example!
+What is the Best Fit?
+It can be of any shape depending on the number of independent variables (a point on the axis, a line in two dimensions, a plane in three dimensions, or a hyperplane in higher dimensions).
+Least Squares Method: The best fit is done by making sure that the sum of all the distances between the shape and the actual observations at each point is as small as possible. The fit of the shape is “best” in the sense that no other position would produce less error given the choice of shape.
+If you want to go into the mathematics, you can have a look below or if you hate mathematics, just skip!
+Image for post
+Image for post
+Image for post
+Least Squares Method for Simple Linear Regression.
+Note: I have shown this method only for Simple Linear Regression. You may extend it for Multiple Linear Regression. Don’t know what Simple and Multiple Linear Regressions are? No problem, keep reading.
+Application in Real Life
+Pick any two things that you use in your daily life and that are related.
+Like, I have data of my monthly spending, monthly income and the number of trips per month for the last three years. Now I need to answer the following questions:
+What will be my monthly spending for next year?
+Which factor(monthly income or number of trips per month) is more important in deciding my monthly spending?
+How monthly income and trips per month are correlated with monthly spending?
+Yes, you are right. Linear Regression will come to your rescue.
+Types of Linear Regression
+Yes, we are complicating it for you. Be open to new stuff. :D
+1. Simple Linear Regression
+This method uses a single independent variable to predict a dependent variable by fitting a best linear relationship.

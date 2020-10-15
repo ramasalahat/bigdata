@@ -1,0 +1,75 @@
+Types of Linear Regression
+→ Simple Linear Regression:
+Simple Linear Regression helps to find the linear relationship between two continuous variables,One independent and one dependent feature.
+Formula can be represented as y=mx+b or,
+Image for post
+→ Multiple Linear Regression:
+Multiple linear Regression is the most common form of linear regression analysis. As a predictive analysis, the multiple linear regression is used to explain the relationship between one continuous dependent variable and two or more independent variables.
+The independent variables can be continuous or categorical (dummy coded as appropriate).
+We Often use Multiple Linear Regression to do any kind of predictive analysis as the data we get has more than 1 independent features to it.
+Formula can be represented as Y=mX1+mX2+mX3…+b,Or
+Image for post
+Now that we know different types of linear regression,Let’s understand how the slope co-efficients and y-intercept are calculated.
+let’s look below to understand what slope and intercept is.
+Image for post
+Photo by Smart on Unsplash
+From,Here on we’ll understand the concept with the help of,
+Simple Linear Regression.
+Understanding the Slope and intercept in the linear regression model:
+What is a slope?
+In a regression context, the slope is very important in the equation because it tells you how much you can expect Y to change as X increases.
+It is denoted by m in the formula y = mx+b.
+Image for post
+It can also be calculated by the formula,
+m = r*(Sy/Sx),
+Where r is the correlation co-efficient.
+Sy and Sx is the standard deviation of x and y.
+And r can be calculated as
+Image for post
+What is Intercept?
+The y-intercept is the place where the regression line y = mx + b crosses the y-axis (where x = 0), and is denoted by b.
+Formula to calculate the intercept is:
+Image for post
+Now,Put this slope and intercept into the formula (y = mx +b) and their you have the description of the best fit line.
+Image for post
+This best fit line will now pass through the data according to the properties of a regression line that is discussed below.Now,What if i tell you there is still room to improve the best fit line?
+As you know, we want our model to be the best performing model on unseen data and to do so Stochastic Gradient Descent is used to update the values of slope and intercept,so that we acheive very low cost function of the model.
+Don’t worry we will look into it later in this blog.
+How does a linear Regression Work?
+The whole idea of the linear Regression is to find the best fit line,which has very low error(cost function).
+This line is also called Least Square Regression Line(LSRL).
+The line of best fit is described with the help of the formula y=mx+b.
+where,m is the Slope and
+b is the intercept.
+Properties of the Regression line:
+1. The line minimizes the sum of squared difference between the observed values(actual y-value) and the predicted value(ŷ value)
+2. The line passes through the mean of independent and dependent features.
+Image for post
+Let’s Understand what cost function(error function) is and how gradient descent is used to get a very accurate model.
+Cost Function of Linear Regression
+Image for post
+Photo by Alexander Mils on Unsplash
+Cost Function is a function that measures the performance of a Machine Learning model for given data.
+Cost Function is basically the calculation of the error between predicted values and expected values and presents it in the form of a single real number.
+Many people gets confused between Cost Function and Loss Function,
+Well to put this in simple terms Cost Function is the average of error of n-sample in the data and Loss Function is the error for individual data points.In other words,Loss Function is for one training example,Cost Function is the for the entire training set.
+So,When it’s clear what cost function is Let’s move on.
+The Cost Function of a linear Regression is taken to be Mean Squared Error.
+some.People may also take Root Mean Square Error.Both are basically same,However adding a Root significantly reduces the value and makes it easy to read.We,take Square here so that we don’t get values in negative.
+Image for post
+Here, n is the total number of data in the dataset.
+You must be wondering where does the slope and intercept comes into play here!!
+J = 1/n*sum(square(pred - y))
+Which, can also be written as :
+J = 1/n*sum(square(pred-(mx+b)))  i.e, y = mx+b 
+Image for post
+We want the Cost Function to be 0 or close to zero,which is the best possible outcome one can get.
+And how do we acheive that?
+Let’s Look at the gradient descent and how it helps improve the weights(m and b) to achieve the desired cost function.
+Linear Regression with Gradient Descent
+Image for post
+Photo by Daniel Frank on Unsplash
+Gradient descent is an optimization algorithm used to find the values of parameters (coefficients) of a function that minimizes a cost function (cost).
+To Read more about it and get a perfect understanting of Gradient Descent i suggest to read Jason Brownlee’s Blog.
+To update m and b values in order to reduce Cost function (minimizing MSE value) and achieving the best fit line you can use the Gradient Descent. The idea is to start with random m and b values and then iteratively updating the values, reaching minimum cost.
+Steps followed by the Gradient Descent to obtain lower cost function:

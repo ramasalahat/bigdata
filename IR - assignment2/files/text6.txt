@@ -1,0 +1,25 @@
+1.3 Assessing Model Using Metrics
+These metrics are useful in estimating the accuracy of coefficients. So now we can model with updated coefficients or features and evaluate the accuracy of this model. The extent of fit of linear regression is generally assessed with two Metrics
+1. RSE can be defined in different terminologies
+— The RSE is an estimate of the standard deviation of error
+— The average value that the dependent variable deviated from the true-regression line or
+— Lack of fit of the model
+2. R-Squared statistic
+— As RSE is measured in the units of Y we are never sure of what value is a good RSE. But R-squared is measured as proportion of variability in Y that can be explained using X and always will be range of 0 to 1 unlike RSE.
+— Formula of R-squared is
+Image for post
+Image for post
+— Total Sum of Squares measures the total variance or the inherent variance present in the response variable Y before the regression was performed.
+— A value near 0 implies the model is unable to explain variance and a value close to 1 says model is able to capture the variability. A good performing model would have the R2 score close to 1
+1.4 Assumptions in Linear Regression
+The regression has five key assumptions:
+Linear relationship: linear regression needs the relationship between the independent and dependent variables to be linear. It is also important to check for outliers since linear regression is sensitive to outlier effects. The linearity assumption can best be tested with scatter plots.
+2. Normal Distribution of error terms: If the error terms are non- normally distributed, confidence intervals may become too wide or narrow i.e., unstable. This does not help in estimation of coefficients based on cost function minimization.
+3. No auto-correlation: The presence of correlation in error terms drastically reduces model’s accuracy. This usually occurs in time series models where the next instant is dependent on previous instant. The estimated standard errors tend to underestimate the true standard error as the intervals become narrower. This further results in reducing p-value which results incorrect conclusion of an insignificant variable.
+4. Heteroscedasticity: The presence of non-constant variance in the error terms results in heteroscedasticity. Generally, non-constant variance arises in presence of outliers or extreme leverage values causing the confidence interval for out of sample prediction to be unrealistically wide or narrow.
+5. No or little multi collinearity: Two variables are collinear if both of them have a mutual dependency. Due to this,it becomes a tough task to figure out the true relationship of a predictors with response variable or find out which variable is actually contributing to predict the response variable.
+— This causes the standard errors to increase. With large standard errors, the confidence interval becomes wider leading to less precise estimates of coefficients.
+1.5 Feature Engineering
+As we talked about collinearity ,there are a few points to be marked. Collinearity of variables is found by plotting a co relation matrix and we eliminate one of the correlated variables that do not add any value to the model. After eliminating the them reconfigure the correlation matrix and continue eliminating till all the variables are independent of each other.
+Instead of inspecting the correlation matrix, a better way to assess multi- collinearity is to compute the variance inflation factor (VIF). The smallest possible value for VIF is 1, which indicates the complete absence of collinearity. VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity.
+This is one of the feature engineering steps. Now train the model and check the metrics that define the accuracy and based on p-values we can eliminate the variables to reach an optimal score.This is performed directly in python packages.
